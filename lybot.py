@@ -1,6 +1,10 @@
 import csv
 import random
 import re
+import tweepy
+import os
+
+from tweepy import OAuthHandler
 
 #name of the csv file containing the albums information (not lyrics)
 csv_name='albums.csv'
@@ -12,12 +16,24 @@ status_name='status.csv'
 #name of the lyrics files, without the prefix lyric/ and suffix .txt
 albums = ['tcdo', 'lr', 'grad', '808s', 'mbdtf', 'wtt', 'cruel', 'yeezus', 'tlop', 'ye', 'ksg']
 
+
+
+CONSUMER_KEY = os.environ['CONSUMER_KEY']
+CONSUMER_SECRET = os.environ['CONSUMER_SECRET']
+ACCESS_KEY = os.environ['ACCESS_KEY']
+ACCESS_SECRET = os.environ['ACCESS_SECRET']
+
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+api = tweepy.API(auth)
+
+
 def split_on_empty_lines(s):
 
-    # greedily match 2 or more new-lines
-    blank_line_regex = r"(?:\r?\n){2,}"
+	# greedily match 2 or more new-lines
+	blank_line_regex = r"(?:\r?\n){2,}"
 
-    return re.split(blank_line_regex, s.strip())
+	return re.split(blank_line_regex, s.strip())
 
 def choose_file():
 	with open(csv_name) as csv_file:
@@ -110,6 +126,10 @@ def main():
 
 	tweet = get_lyric(file, lyric_index)
 	print(tweet)
+
+	# Create a tweet
+	api.update_status(tweet)
+
 
 
 if __name__ == '__main__':
