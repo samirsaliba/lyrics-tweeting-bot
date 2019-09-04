@@ -121,14 +121,22 @@ def main():
 		update_num_lyrics()
 		update_status_file()
 
+	try_tweet = True
 
-	file, lyric_index = choose_file()
+	while try_tweet:	
+		file, lyric_index = choose_file()
+		tweet = get_lyric(file, lyric_index)
+		print(tweet)
 
-	tweet = get_lyric(file, lyric_index)
-	print(tweet)
-
-	# Create a tweet
-	api.update_status(tweet)
+		try:
+	    	api.update_status(tweet)
+	    	try_tweet = False
+		except tweepy.TweepError as error:
+	    	if error.api_code == 187:
+	    		print('Duplicate tweet. Trying again...')
+	        	try_tweet = True
+	   		else:
+	       		raise error
 
 
 
