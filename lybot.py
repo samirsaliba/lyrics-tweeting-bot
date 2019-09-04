@@ -29,13 +29,11 @@ def choose_file():
 		currentsum = 0
 
 		for row in csv_reader:
-			print(row)
-
 			lyric = lyric_num - currentsum
 			if row == []:
 				continue
 			elif lyric_num < int(row[2]):
-				print('row[2]: ' + str(row[2]))
+				print('Lyric chosen: ' + str(lyric) + ' from ' + str(row[0]))
 				return row[0], lyric
 			currentsum = int(row[2])
 
@@ -75,7 +73,6 @@ def check_files_changed():
 		csv_reader = csv.reader(csv_file, delimiter=',')
 		for row in csv_reader:
 			if row[0] == 'up-to-date':
-				print(row[0] + ' ' + row[1])
 				if row[1] == ('yes' or ' yes'):
 					return True
 				else:
@@ -89,6 +86,7 @@ def update_status_file():
 		writer.writerow({'one': "write anything else besides the comma below to sign the lyric files were modified", 'two':"" })
 		writer.writerow({'one': "please no blank spaces before/after the 'yes'", 'two':"" })
 		writer.writerow({'one': "up-to-date", 'two': 'yes'})
+		print("Files updated.")
 					
 
 def main():
@@ -103,8 +101,10 @@ def main():
 
 	lyrics_up_to_date = check_files_changed()
 	if not lyrics_up_to_date:
-		update_num_lyrics(files)
+		print("Lyrics files were modified. Updating...")
+		update_num_lyrics()
 		update_status_file()
+
 
 	file, lyric_index = choose_file()
 

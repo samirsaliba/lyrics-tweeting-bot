@@ -1,3 +1,4 @@
-write 'no' besides the comma below to sign the lyric files were modified,
-write 'yes' besides the comma below to sign the lyric files weren't modified,
+write 'yes' besides the comma after 'up-to-date' to sign the lyric files weren't modified,
+write anything else besides the comma below to sign the lyric files were modified,
+please no blank spaces before/after the 'yes',
 up-to-date,yes
