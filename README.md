@@ -2,6 +2,7 @@
 Twitter bot that tweets song lyrics! (Now it also tweets images!)
 
 run 'python lybot.py' for lyrics
+
 run 'imgbot.py' for images
 
 Twitter bot that tweets lyrics from a text file, or an image from a folder.
