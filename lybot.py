@@ -129,14 +129,14 @@ def main():
 		print(tweet)
 
 		try:
-	    	api.update_status(tweet)
-	    	try_tweet = False
+			api.update_status(tweet)
+			try_tweet = False
 		except tweepy.TweepError as error:
-	    	if error.api_code == 187:
-	    		print('Duplicate tweet. Trying again...')
-	        	try_tweet = True
-	   		else:
-	       		raise error
+			if error.api_code == 187:
+				print('Duplicate tweet. Trying again...')
+				try_tweet = True
+			else:
+				raise error
 
 
 
