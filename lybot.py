@@ -2,6 +2,8 @@ import os
 import psycopg2
 from datetime import datetime
 import random as rd
+import tweepy
+from tweepy import OAuthHandler
 
 
 # Fetch config vars
@@ -22,27 +24,21 @@ api = tweepy.API(auth)
 
 
 try:
-    postgreSQL_select_Query = "select * \
-        from lyrics \
-        ORDER BY last_time NULLS FIRST \
-        fetch first 100 rows only"
-
+    postgreSQL_select_Query = "select * from lyrics ORDER BY last_time NULLS FIRST fetch first 100 rows only"
     cursor.execute(postgreSQL_select_Query)
-
     query = cursor.fetchall()
+    
     aux = rd.randint(0, 100)
     index, lyric, album, date = query[aux]
     date = datetime.now()
 
     sql_update_query = """Update lyrics set last_time = %s where id = %s"""
     cursor.execute(sql_update_query, (date, index))
-    
-	api.update_status(lyric)
+    api.update_status(lyric)
     connection.commit()
-
     print ("Tweet sent!");
 
-except (Exception, psycopg2.Error) as error :
+except (Exception, psycopg2.Error) as error:
     if(connection):
         print("Error: ", error)
     
