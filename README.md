@@ -1,5 +1,7 @@
 # lyrics-tweeting-bot
 Twitter bot that tweets song lyrics! (Now it also tweets images!)
+Check it out here:
+[@theyeezybot](https://twitter.com/theyeezybot)
 
 run 'python lybot.py' for lyrics
 
