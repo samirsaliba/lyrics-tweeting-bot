@@ -19,11 +19,10 @@ Just opens the images (or any other set) folder and selects one image randomly t
 TODO:
 Also upload the images to a db and choose which one to tweet based on when they were last tweeted.
 
-I followed [**this**](https://www.freecodecamp.org/news/building-a-twitter-lyric-bot-12468255a4ee/) incredible yet simple tutorial made by [**@ShawnToubeau**](https://github.com/ShawnToubeau) (thanks, Shawn!): 
-
-Some indisposable references:
-[Managing the environment variables](https://devcenter.heroku.com/articles/config-vars)
-[Setting up the database properly](https://devcenter.heroku.com/articles/heroku-postgresql)
+Some indisposable references:  
+* [**this**](https://www.freecodecamp.org/news/building-a-twitter-lyric-bot-12468255a4ee/) incredible yet simple tutorial made by [**@ShawnToubeau**](https://github.com/ShawnToubeau) (thanks, Shawn!)  
+* [Managing the environment variables on Heroku](https://devcenter.heroku.com/articles/config-vars)  
+* [Setting up the database properly on Heroku](https://devcenter.heroku.com/articles/heroku-postgresql)
 
 Also had some help at tweeting pictures from my good friend Lucas Zatta @LucasZatta (you should also check his AMAZING framebot [**here**](https://github.com/LucasZatta/FrameBot) )
 
